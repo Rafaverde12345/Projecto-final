@@ -34,14 +34,14 @@
 
         lancamentos.push(l);
 
-        lancamentos.innerhtml = "";
-
+        
         render();
       }
 
       function render() {
+
         const tbody = document.querySelector("tbody");
-        tbody;
+        tbody.innerHTML = "";
 
         let saldo = 0;
         lancamentos.forEach(function (l) {
