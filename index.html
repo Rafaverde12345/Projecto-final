@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xaruto 3</title>
+  </head>
+  <body>
+    <h1>Fluxo de Caixa</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>descrição</th>
+          <th>valor</th>
+          <th>saldo</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <input type="text" placeholder="descricao" />
+    <input type="number" placeholder="valor" />
+    <button onclick="salvar()">Adicionar</button>
+    <script>
+      const lancamentos = [
+        { d: "Saldo Inicial", v: 700 },
+        { d: "Restaurante", v: -200 },
+      ];
+
+      function salvar() {
+        const d = document.querySelector("input[type=text]").value;
+        const v = +document.querySelector("input[type=number]").value;
+
+        const l = { d, v };
+
+        lancamentos.push(l);
+
+        lancamentos.innerhtml = "";
+
+        render();
+      }
+
+      function render() {
+        const tbody = document.querySelector("tbody");
+        tbody;
+
+        let saldo = 0;
+        lancamentos.forEach(function (l) {
+          const tr = document.createElement("tr");
+
+          const td1 = document.createElement("td");
+          td1.innerText = l.d;
+          const td2 = document.createElement("td");
+          td2.innerText = l.v;
+          const td3 = document.createElement("td");
+          saldo = saldo + l.v;
+          td3.innerText = saldo;
+
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+
+          tbody.appendChild(tr);
+        });
+      }
+
+      render();
+    </script>
+  </body>
+</html>
